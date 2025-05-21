@@ -96,7 +96,3 @@ This application is designed for practicing security testing. Here are some area
    - Test SQL injection
    - Test file upload vulnerabilities
    - Test input sanitization
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
