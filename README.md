@@ -100,7 +100,3 @@ Feel free to submit issues and enhancement requests!
 ## Disclaimer
 
 This application is intentionally vulnerable and should only be used in controlled environments for educational purposes. Do not deploy this application in production or expose it to the public internet.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
