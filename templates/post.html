@@ -3,29 +3,63 @@
 {% block title %}{{ post.title }} - Vulnerable Blog{% endblock %}
 
 {% block content %}
-    <div class="post">
-        <h1>{{ post.title }}</h1>
-        <p>Posted by: {{ post.username }}</p>
-        <div>{{ post.content|safe }}</div>
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">{{ post.title }}</li>
+            </ol>
+        </nav>
+
+        <article class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h1 class="card-title">{{ post.title }}</h1>
+                <div class="d-flex align-items-center mb-3">
+                    <i class="bi bi-person-circle me-2"></i>
+                    <span class="text-muted">{{ post.username }}</span>
+                </div>
+                <div class="card-text">
+                    {{ post.content|safe }}
+                </div>
+            </div>
+        </article>
+
+        <div class="comment-section">
+            <h3 class="mb-4">
+                <i class="bi bi-chat-dots"></i> Comments
+                <span class="badge bg-secondary">{{ post.comments|length }}</span>
+            </h3>
+
+            {% if username %}
+            <form method="POST" action="/post/{{ post.id }}/comment" class="mb-4">
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Add a comment</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-send"></i> Post Comment
+                </button>
+            </form>
+            {% else %}
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i> Please <a href="/login">login</a> to comment
+            </div>
+            {% endif %}
+
+            {% for comment in post.comments %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6 class="card-subtitle text-muted">
+                            <i class="bi bi-person"></i> {{ comment.username }}
+                        </h6>
+                    </div>
+                    <p class="card-text">{{ comment.comment|safe }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    
-    <h2>Comments</h2>
-    {% for comment in post.comments %}
-    <div class="comment">
-        <p><strong>{{ comment.username }} says:</strong></p>
-        <div>{{ comment.comment|safe }}</div>
-    </div>
-    {% else %}
-    <p>No comments yet.</p>
-    {% endfor %}
-    
-    {% if username %}
-    <h3>Add a Comment</h3>
-    <form method="post" action="/post/{{ post.id }}/comment">
-        <textarea name="comment" rows="4" required></textarea>
-        <button type="submit">Post Comment</button>
-    </form>
-    {% else %}
-    <p><a href="/login">Login to comment</a></p>
-    {% endif %}
+</div>
 {% endblock %} 
