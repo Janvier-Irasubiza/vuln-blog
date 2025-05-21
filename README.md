@@ -1,4 +1,4 @@
-# Vulnerable Blog
+# Community Blog
 
 A deliberately vulnerable blog application for practicing security testing and penetration testing. This application contains intentional security vulnerabilities for testing purposes.
 
