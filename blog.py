@@ -5,7 +5,6 @@ from fastapi.staticfiles import StaticFiles
 from typing import List, Optional
 import uvicorn
 import os
-import json
 
 # Create directories if they don't exist
 os.makedirs("templates", exist_ok=True)
@@ -55,7 +54,7 @@ class Database:
 db = Database()
 
 # Add some initial content
-db.add_post("admin", "Welcome to Vulnerable Blog", "This is a deliberately vulnerable blog for practicing XSS attacks.")
+db.add_post("admin", "Welcome to Community Blog", "This is a deliberately Community blog for practicing XSS attacks.")
 
 # Routes
 @app.get("/", response_class=HTMLResponse)
@@ -72,7 +71,7 @@ async def login_page(request: Request):
 
 @app.post("/login")
 async def login(username: str = Form(...), password: str = Form(...)):
-    # Vulnerable login (no CSRF protection, etc.)
+    # Community login (no CSRF protection, etc.)
     if username in db.users and db.users[username] == password:
         response = RedirectResponse(url="/", status_code=303)
         response.set_cookie(key="username", value=username)
@@ -143,4 +142,4 @@ async def profile(request: Request, username: Optional[str] = Cookie(None)):
     })
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=9000)

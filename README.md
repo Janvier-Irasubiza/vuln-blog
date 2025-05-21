@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python blog.py
 ```
 
-2. Access the application at `http://localhost:8000`
+2. Access the application at `http://localhost:9000`
 
 ## Test Credentials
 
