@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Vulnerable Blog{% endblock %}
+
+{% block content %}
+    <div class="post">
+        <h1>{{ post.title }}</h1>
+        <p>Posted by: {{ post.username }}</p>
+        <div>{{ post.content|safe }}</div>
+    </div>
+    
+    <h2>Comments</h2>
+    {% for comment in post.comments %}
+    <div class="comment">
+        <p><strong>{{ comment.username }} says:</strong></p>
+        <div>{{ comment.comment|safe }}</div>
+    </div>
+    {% else %}
+    <p>No comments yet.</p>
+    {% endfor %}
+    
+    {% if username %}
+    <h3>Add a Comment</h3>
+    <form method="post" action="/post/{{ post.id }}/comment">
+        <textarea name="comment" rows="4" required></textarea>
+        <button type="submit">Post Comment</button>
+    </form>
+    {% else %}
+    <p><a href="/login">Login to comment</a></p>
+    {% endif %}
+{% endblock %} 

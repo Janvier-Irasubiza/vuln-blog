@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>All Posts</h1>
+    
+    {% for post in posts %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p>Posted by: {{ post.username }}</p>
+        <div>{{ post.content|safe }}</div>
+        <a href="/post/{{ post.id }}">Comment</a>
+    </div>
+    {% endfor %}
+{% endblock %} 

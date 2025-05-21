@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Vulnerable Blog{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+        .container { width: 80%; margin: 0 auto; padding: 20px; }
+        nav { background: #333; color: white; padding: 10px 0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: white; text-decoration: none; margin-right: 15px; }
+        .post { border-bottom: 1px solid #ddd; padding: 20px 0; }
+        .post h2 { margin-top: 0; }
+        .comment { background: #f9f9f9; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        form { margin: 20px 0; }
+        input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { background: #333; color: white; border: none; padding: 10px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div>
+                <a href="/">Home</a>
+                {% if username %}
+                <a href="/new-post">New Post</a>
+                <a href="/profile">Profile</a>
+                {% endif %}
+            </div>
+            <div>
+                {% if username %}
+                <span>Welcome, {{ username }}</span>
+                <a href="/logout">Logout</a>
+                {% else %}
+                <a href="/login">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html> 
