@@ -1,6 +1,11 @@
 # Vulnerable Blog
 
-A deliberately vulnerable blog application built with FastAPI for practicing security testing and penetration testing. This application contains intentional security vulnerabilities for educational purposes.
+A deliberately vulnerable blog application for practicing security testing and penetration testing. This application contains intentional security vulnerabilities for testing purposes.
+
+## ⚠️ Important Notice
+
+This application is intentionally vulnerable and should only be used in controlled environments for educational or testing purposes. It collects visitor data including IP addresses, geographic locations, and timestamps. For privacy and security reasons, Please run this application only in an isolated and controlled environment.
+
 
 ## Features
 
@@ -8,17 +13,16 @@ A deliberately vulnerable blog application built with FastAPI for practicing sec
 - Create, read blog posts
 - Comment system
 - User profiles
-- Modern responsive UI with Bootstrap 5
-- Mobile-friendly design
 
 ## Security Vulnerabilities
 
-This application contains intentional security vulnerabilities for educational purposes, including:
+This application contains intentional security vulnerabilities for testing purposes, including:
 - XSS (Cross-Site Scripting) vulnerabilities
 - CSRF (Cross-Site Request Forgery) vulnerabilities
 - Insecure direct object references
 - Insufficient input validation
 - Cookie-based authentication without proper security measures
+- No HTML escaping
 
 ## Prerequisites
 
@@ -96,7 +100,3 @@ This application is designed for practicing security testing. Here are some area
 ## Contributing
 
 Feel free to submit issues and enhancement requests!
-
-## Disclaimer
-
-This application is intentionally vulnerable and should only be used in controlled environments for educational purposes. Do not deploy this application in production or expose it to the public internet.
